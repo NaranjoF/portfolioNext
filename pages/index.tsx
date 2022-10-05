@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
+import Main from "../components/Main";
 import Head from "next/head";
-import Image from "next/image";
 import Navbar from "../components/Navbar";
+import About from "../components/About";
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +13,8 @@ const Home: NextPage = () => {
       </Head>
 
       <Navbar />
+      <Main />
+      <About />
     </div>
   );
 };
