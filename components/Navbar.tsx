@@ -5,41 +5,86 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { setnavbarState } from "../slices/navbarSlice";
+import { useEffect } from "react";
+import { setnavbarShadowState } from "../slices/navbarShadowSlice";
+import { setnavbarBgState } from "../slices/navbarBgSlice";
+import { setlinkColorState } from "../slices/linkColorSlice";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const dispatch = useAppDispatch();
   const navbarState = useAppSelector((state) => state.navbar.value);
+  const navbarShadowState = useAppSelector((state) => state.navbarShadow.value);
+  const navbarBg = useAppSelector((state) => state.navbarBg.value);
+  const linkColor = useAppSelector((state) => state.linkColor.value);
+  const router = useRouter();
 
   const handleNav = () => {
     dispatch(setnavbarState(!navbarState));
   };
 
+  useEffect(() => {
+    if (router.asPath === "/netflix") {
+      dispatch(setlinkColorState("#ecf0f3"));
+      dispatch(setnavbarBgState("transparent"));
+    } else {
+      dispatch(setlinkColorState("#1f2937"));
+      dispatch(setnavbarBgState("#ecf0f3"));
+    }
+  }, [router]);
+
+  useEffect(() => {
+    const handleShadow = () => {
+      if (window.scrollY >= 1) {
+        dispatch(setnavbarShadowState(true));
+      } else {
+        dispatch(setnavbarShadowState(false));
+      }
+    };
+
+    window.addEventListener("scroll", handleShadow);
+
+    return () => {
+      window.removeEventListener("scroll", handleShadow);
+    };
+  }, []);
+
   return (
-    <div className="fixed w-full h-20 shadow-xl z-[100] bg-[#ecf0f3]">
+    <div
+      style={{ backgroundColor: `${navbarBg}` }}
+      className={
+        navbarShadowState
+          ? "fixed w-full h-20 shadow-xl z-[100]"
+          : "fixed w-full h-20 z-[100]"
+      }
+    >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
-        <Image
-          src="/../public/assets/logo.png"
-          alt="logoNavbar"
-          width="50"
-          height="50"
-        />
+        <Link href="/">
+          <Image
+            src="/../public/assets/logo.png"
+            alt="logoNavbar"
+            width="50"
+            height="50"
+            className="cursor-pointer"
+          />
+        </Link>
         <div>
-          <ul className="hidden md:flex">
+          <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
             <Link href="/">
               <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
             </Link>
-            <Link href="/">
+            <Link href="/#about">
               <li className="ml-10 text-sm uppercase hover:border-b">About</li>
             </Link>
-            <Link href="/">
+            <Link href="/#skills">
               <li className="ml-10 text-sm uppercase hover:border-b">Skills</li>
             </Link>
-            <Link href="/">
+            <Link href="/#projects">
               <li className="ml-10 text-sm uppercase hover:border-b">
                 Projects
               </li>
             </Link>
-            <Link href="/">
+            <Link href="/#contact">
               <li className="ml-10 text-sm uppercase hover:border-b">
                 Contact
               </li>
@@ -67,12 +112,15 @@ export default function Navbar() {
         >
           <div>
             <div className="flex w-full items-center justify-between">
-              <Image
-                src="/../public/assets/logo.png"
-                alt="logoNavbar"
-                width="40"
-                height="40"
-              />
+              <Link href="/">
+                <Image
+                  src="/../public/assets/logo.png"
+                  alt="logoNavbar"
+                  width="40"
+                  height="40"
+                  className="cursor-pointer"
+                />
+              </Link>
 
               <div
                 onClick={handleNav}
@@ -92,19 +140,44 @@ export default function Navbar() {
           <div className="py-4 flex flex-col">
             <ul className="uppercase">
               <Link href="/">
-                <li className="py-4 text-sm">Home</li>
+                <li
+                  onClick={() => dispatch(setnavbarState(false))}
+                  className="py-4 text-sm"
+                >
+                  Home
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">About</li>
+              <Link href="/#about">
+                <li
+                  onClick={() => dispatch(setnavbarState(false))}
+                  className="py-4 text-sm"
+                >
+                  About
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">Skills</li>
+              <Link href="/#skills">
+                <li
+                  onClick={() => dispatch(setnavbarState(false))}
+                  className="py-4 text-sm"
+                >
+                  Skills
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">Projects</li>
+              <Link href="/#projects">
+                <li
+                  onClick={() => dispatch(setnavbarState(false))}
+                  className="py-4 text-sm"
+                >
+                  Projects
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">Contact</li>
+              <Link href="/#contact">
+                <li
+                  onClick={() => dispatch(setnavbarState(false))}
+                  className="py-4 text-sm"
+                >
+                  Contact
+                </li>
               </Link>
             </ul>
             <div className="pt-40">

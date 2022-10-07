@@ -7,9 +7,15 @@ import {
 } from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import navbarReducer from "./slices/navbarSlice";
+import navbarshadowReducer from "./slices/navbarShadowSlice";
+import navbarBgReducer from "./slices/navbarBgSlice";
+import linkColorReducer from "./slices/linkColorSlice";
 
 const combinedReducer = combineReducers({
   navbar: navbarReducer,
+  navbarShadow: navbarshadowReducer,
+  navbarBg: navbarBgReducer,
+  linkColor: linkColorReducer,
 });
 
 const reducer = (
