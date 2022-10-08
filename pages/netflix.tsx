@@ -2,8 +2,15 @@ import Image from "next/image";
 import netflixClone from "../public/assets/projects/netflixBanner.png";
 import { RiRadioButtonFill } from "react-icons/ri";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { en, es } from "../lang/translations";
 
 export default function Netflix() {
+  const router = useRouter();
+  const { locale } = router;
+
+  const t = locale === "en" ? en : es;
+
   return (
     <div className="w-full">
       <div className="w-full h-[30vh] lg:h-[40vh] relative">
@@ -24,7 +31,7 @@ export default function Netflix() {
       <div className="max-w-[1240px] mx-auto p-2 grid md:grid-cols-5 gap-8 pt-8">
         <div className="md:col-span-3 lg:col-span-4 text-sm">
           <p>Project</p>
-          <h2>Overview</h2>
+          <h2>{t.netflix.title}</h2>
           <p className="mb-3">
             This netflix clone was created in NEXT JS, using FIREBASE to perform
             the login function, STYLED COMPONENTS to style the project, and THE

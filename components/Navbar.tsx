@@ -5,12 +5,13 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { setnavbarState } from "../slices/navbarSlice";
-import { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { setnavbarShadowState } from "../slices/navbarShadowSlice";
 import { setnavbarBgState } from "../slices/navbarBgSlice";
 import { setlinkColorState } from "../slices/linkColorSlice";
 import { useRouter } from "next/router";
 import navbarLogo from "../public/assets/logo.png";
+import { en, es } from "../lang/translations";
 
 export default function Navbar() {
   const dispatch = useAppDispatch();
@@ -19,10 +20,32 @@ export default function Navbar() {
   const navbarBg = useAppSelector((state) => state.navbarBg.value);
   const linkColor = useAppSelector((state) => state.linkColor.value);
   const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : es;
+
+  const firstSelector = useRef<HTMLOptionElement>(null);
+  const secondSelector = useRef<HTMLOptionElement>(null);
 
   const handleNav = () => {
     dispatch(setnavbarState(!navbarState));
   };
+
+  const [isEnSelected, setIsEnSelected] = useState(false);
+
+  useEffect(() => {
+    const first = firstSelector.current;
+    const second = secondSelector.current;
+
+    if (locale === "en" && first !== null && second !== null) {
+      setIsEnSelected(true);
+      first.value = "en";
+      second.value = "es";
+    } else if (locale !== "en" && first !== null && second !== null) {
+      setIsEnSelected(false);
+      first.value = "es";
+      second.value = "en";
+    }
+  }, []);
 
   useEffect(() => {
     if (router.asPath === "/netflix" && window.scrollY === 0) {
@@ -50,6 +73,12 @@ export default function Navbar() {
     };
   }, []);
 
+  const changeLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    router.push(router.pathname, router.pathname, {
+      locale: e.target.value,
+    });
+  };
+
   return (
     <div
       style={{ backgroundColor: `${navbarBg}` }}
@@ -69,31 +98,51 @@ export default function Navbar() {
             className="cursor-pointer"
           />
         </Link>
-        <div>
+        <div className="flex justify-center items-center">
           <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
             <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                {t.navbar.home}
+              </li>
             </Link>
             <Link href="/#about">
-              <li className="ml-10 text-sm uppercase hover:border-b">About</li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                {t.navbar.about}
+              </li>
             </Link>
             <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:border-b">Skills</li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                {t.navbar.skills}
+              </li>
             </Link>
             <Link href="/#projects">
               <li className="ml-10 text-sm uppercase hover:border-b">
-                Projects
+                {t.navbar.projects}
               </li>
             </Link>
             <Link href="/#contact">
               <li className="ml-10 text-sm uppercase hover:border-b">
-                Contact
+                {t.navbar.contact}
               </li>
             </Link>
           </ul>
-          <div onClick={handleNav} className="md:hidden">
-            <AiOutlineMenu size={25} />
+          <div className="flex justify-center items-center md:hidden">
+            <div onClick={handleNav} className="cursor-pointer">
+              <AiOutlineMenu size={25} />
+            </div>
           </div>
+          <select
+            onChange={changeLang}
+            className="ml-10 text-shadow-sm text-sm bg-transparent uppercase cursor-pointer focus:outline-none"
+          >
+            <option ref={firstSelector} className="text-black" value="en">
+              {isEnSelected ? "EN" : "ES"}
+            </option>
+
+            <option ref={secondSelector} className="text-black" value="es">
+              {isEnSelected ? "ES" : "EN"}
+            </option>
+          </select>
         </div>
       </div>
 

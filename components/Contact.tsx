@@ -4,29 +4,34 @@ import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+interface Inputs {
+  email: string;
+  name: string;
+  message: string;
+}
 
 export default function Contact() {
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm<Inputs>();
 
-  useEffect(() => {
-    console.log(values);
-  }, [values]);
-
-  const [errors, setErrors] = useState<{
+  const [errorsForm, setErrorsForm] = useState<{
     name?: string;
     email?: string;
     message?: string;
   }>({});
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const isError = Object.keys(errors).length;
+  const onSubmit: SubmitHandler<Inputs> = async ({ email, name, message }) => {
+    const valuesForm = { email, name, message };
+    const isError = Object.keys(errorsForm).length;
     if (isError && isError > 0) {
-      setErrors(errors);
+      setErrorsForm(errorsForm);
       return;
     }
     try {
@@ -35,26 +40,27 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(valuesForm),
       });
       if (!res.ok) {
-        setValues({ name: "", message: "", email: "" });
+        console.log("all ok");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const onChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const [sendOk, setSendOk] = useState(false);
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset();
+      setSendOk(true);
+    }
+  }, [formState, reset]);
 
   return (
-    <div id="contact" className="w-full lg:h-screen">
+    <div id="contact" className="w-full lg:h-screen relative">
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
         <p className="text-xl tracking-widest uppercase text-[#5651e5]">
           Contact
@@ -100,39 +106,69 @@ export default function Contact() {
 
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
             <div className="p-4">
-              <form onSubmit={handleSubmit}>
+              <form action="#" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-4 w-full py-2">
                   <div className="flex flex-col py-2">
                     <label className="uppercase text-sm py-2">Name</label>
                     <input
                       type="text"
-                      name="name"
-                      onChange={onChange}
                       className="border-2 rounded-lg p-3 flex border-gray-300"
+                      onClick={() => setSendOk(false)}
+                      {...register("name", {
+                        required: true,
+                        minLength: 4,
+                        maxLength: 30,
+                      })}
                     />
+                    {errors.name && (
+                      <span className="pt-1 text-[#5651e5]">
+                        Please enter your name, with a minimum of 4 characters
+                        and a maximum of 30
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Email</label>
                   <input
                     type="email"
-                    name="email"
-                    onChange={onChange}
                     className="border-2 rounded-lg p-3 flex border-gray-300"
+                    onClick={() => setSendOk(false)}
+                    {...register("email", { required: true })}
                   />
+                  {errors.email && (
+                    <span className="pt-1 text-[#5651e5]">
+                      Please enter a valid email.
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Message</label>
                   <textarea
-                    className="border-2 rounded-lg p-3 border-gray-300"
-                    name="message"
-                    onChange={onChange}
+                    className="border-2 rounded-lg p-3 border-gray-300 resize-none"
                     rows={10}
+                    onClick={() => setSendOk(false)}
+                    {...register("message", {
+                      required: true,
+                      minLength: 10,
+                      maxLength: 500,
+                    })}
                   ></textarea>
+                  {errors.message && (
+                    <span className="pt-1 text-[#5651e5]">
+                      Please enter a valid message with a minimum of 10
+                      characters and a maximum of 500.
+                    </span>
+                  )}
                 </div>
-                <button className="w-full p-4 text-gray-100 mt-4">
+                <button className="w-full p-4 text-gray-100 mt-4 mb-5">
                   Send Message
                 </button>
+                {sendOk && (
+                  <span className="text-[#16a34a]">
+                    Your message has been sent successfully!.
+                  </span>
+                )}
               </form>
             </div>
           </div>
