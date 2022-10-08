@@ -5,16 +5,18 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 export default function Main() {
   return (
     <div id="home" className="w-full h-screen text-center">
-      <div className="nax-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
+      <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
         <div>
-          <p className="uppercase text-sm tracking-widest text-gray-600">
+          <p className="uppercase text-sm tracking-widest text-gray-600 select-none">
             We can create some together!
           </p>
-          <h1 className="py-4 text-gray-700">
+          <h1 className="py-4 text-gray-700 select-none">
             Hi, I'm <span className="text-[#5651e5]">Facundo</span>
           </h1>
-          <h1 className="py-4 text-gray-700">A Front-End Web Developer</h1>
-          <p className="py-4 text-gray-600 max-w-[70%] m-auto">
+          <h1 className="py-4 text-gray-700 select-none">
+            A Front-End Web Developer
+          </h1>
+          <p className="py-4 text-gray-600 max-w-[70%] m-auto select-none">
             I specialize in creating and bringing to life digital projects on
             the web. I work every day to improve myself and try to expand my
             knowledge in the world of web development, today I am focused on

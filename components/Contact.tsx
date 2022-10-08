@@ -1,10 +1,58 @@
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 
 export default function Contact() {
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  useEffect(() => {
+    console.log(values);
+  }, [values]);
+
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const isError = Object.keys(errors).length;
+    if (isError && isError > 0) {
+      setErrors(errors);
+      return;
+    }
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        setValues({ name: "", message: "", email: "" });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   return (
     <div id="contact" className="w-full lg:h-screen">
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
@@ -18,13 +66,13 @@ export default function Contact() {
             <div className="lg:p-4 h-full">
               <div>
                 <img
-                  className="rounded-xl hover:scale-105 ease-in duration-300"
+                  className="rounded-xl"
                   src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                   alt="contactImage"
                 />
               </div>
               <div>
-                <h2 className="py-2">Name Here</h2>
+                <h2 className="py-2">Facundo Naranjo</h2>
                 <p>Front-End Developer</p>
                 <p className="py-4">Contact me and let's talk.</p>
               </div>
@@ -52,22 +100,14 @@ export default function Contact() {
 
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
             <div className="p-4">
-              <form>
-                <div className="grid md:grid-cols-2 gap-4 w-full py-2">
-                  <div className="flex flex-col">
+              <form onSubmit={handleSubmit}>
+                <div className="grid gap-4 w-full py-2">
+                  <div className="flex flex-col py-2">
                     <label className="uppercase text-sm py-2">Name</label>
                     <input
                       type="text"
-                      className="border-2 rounded-lg p-3 flex border-gray-300"
-                    />
-                  </div>
-
-                  <div className="flex flex-col">
-                    <label className="uppercase text-sm py-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="text"
+                      name="name"
+                      onChange={onChange}
                       className="border-2 rounded-lg p-3 flex border-gray-300"
                     />
                   </div>
@@ -76,13 +116,8 @@ export default function Contact() {
                   <label className="uppercase text-sm py-2">Email</label>
                   <input
                     type="email"
-                    className="border-2 rounded-lg p-3 flex border-gray-300"
-                  />
-                </div>
-                <div className="flex flex-col py-2">
-                  <label className="uppercase text-sm py-2">Subject</label>
-                  <input
-                    type="text"
+                    name="email"
+                    onChange={onChange}
                     className="border-2 rounded-lg p-3 flex border-gray-300"
                   />
                 </div>
@@ -90,6 +125,8 @@ export default function Contact() {
                   <label className="uppercase text-sm py-2">Message</label>
                   <textarea
                     className="border-2 rounded-lg p-3 border-gray-300"
+                    name="message"
+                    onChange={onChange}
                     rows={10}
                   ></textarea>
                 </div>

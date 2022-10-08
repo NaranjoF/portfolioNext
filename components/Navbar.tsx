@@ -10,6 +10,7 @@ import { setnavbarShadowState } from "../slices/navbarShadowSlice";
 import { setnavbarBgState } from "../slices/navbarBgSlice";
 import { setlinkColorState } from "../slices/linkColorSlice";
 import { useRouter } from "next/router";
+import navbarLogo from "../public/assets/logo.png";
 
 export default function Navbar() {
   const dispatch = useAppDispatch();
@@ -24,14 +25,14 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    if (router.asPath === "/netflix") {
+    if (router.asPath === "/netflix" && window.scrollY === 0) {
       dispatch(setlinkColorState("#ecf0f3"));
       dispatch(setnavbarBgState("transparent"));
     } else {
       dispatch(setlinkColorState("#1f2937"));
       dispatch(setnavbarBgState("#ecf0f3"));
     }
-  }, [router]);
+  });
 
   useEffect(() => {
     const handleShadow = () => {
@@ -54,14 +55,14 @@ export default function Navbar() {
       style={{ backgroundColor: `${navbarBg}` }}
       className={
         navbarShadowState
-          ? "fixed w-full h-20 shadow-xl z-[100]"
-          : "fixed w-full h-20 z-[100]"
+          ? "fixed w-full h-20 shadow-xl z-[100] ease-in duration-300"
+          : "fixed w-full h-20 z-[100] ease-in duration-300"
       }
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/">
           <Image
-            src="/../public/assets/logo.png"
+            src={navbarLogo}
             alt="logoNavbar"
             width="50"
             height="50"
@@ -114,7 +115,7 @@ export default function Navbar() {
             <div className="flex w-full items-center justify-between">
               <Link href="/">
                 <Image
-                  src="/../public/assets/logo.png"
+                  src={navbarLogo}
                   alt="logoNavbar"
                   width="40"
                   height="40"
@@ -180,7 +181,7 @@ export default function Navbar() {
                 </li>
               </Link>
             </ul>
-            <div className="pt-40">
+            <div className="pt-32">
               <p className="uppercase tracking-widest text-[#5651e5]">
                 Let's Connect
               </p>
