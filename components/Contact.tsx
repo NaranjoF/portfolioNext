@@ -5,6 +5,8 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import { en, es } from "../lang/translations";
 
 interface Inputs {
   email: string;
@@ -59,13 +61,17 @@ export default function Contact() {
     }
   }, [formState, reset]);
 
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : es;
+
   return (
     <div id="contact" className="w-full lg:h-screen relative">
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
         <p className="text-xl tracking-widest uppercase text-[#5651e5]">
-          Contact
+          {t.contact.headerTitle}
         </p>
-        <h2 className="py-4">Get In Touch</h2>
+        <h2 className="py-4">{t.contact.title}</h2>
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Left */}
           <div className="col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4">
@@ -79,11 +85,11 @@ export default function Contact() {
               </div>
               <div>
                 <h2 className="py-2">Facundo Naranjo</h2>
-                <p>Front-End Developer</p>
-                <p className="py-4">Contact me and let's talk.</p>
+                <p>{t.contact.subtitle}</p>
+                <p className="py-4">{t.contact.subtitle2}</p>
               </div>
               <div>
-                <p className="uppercase pt-8">Connect With Me</p>
+                <p className="uppercase pt-8">{t.contact.subtitle3}</p>
                 <div className="flex items-center justify-between py-4">
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300">
                     <FaLinkedinIn />
@@ -109,7 +115,9 @@ export default function Contact() {
               <form action="#" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-4 w-full py-2">
                   <div className="flex flex-col py-2">
-                    <label className="uppercase text-sm py-2">Name</label>
+                    <label className="uppercase text-sm py-2">
+                      {t.contact.name}
+                    </label>
                     <input
                       type="text"
                       className="border-2 rounded-lg p-3 flex border-gray-300"
@@ -122,14 +130,15 @@ export default function Contact() {
                     />
                     {errors.name && (
                       <span className="pt-1 text-[#5651e5]">
-                        Please enter your name, with a minimum of 4 characters
-                        and a maximum of 30
+                        {t.contact.errorName}
                       </span>
                     )}
                   </div>
                 </div>
                 <div className="flex flex-col py-2">
-                  <label className="uppercase text-sm py-2">Email</label>
+                  <label className="uppercase text-sm py-2">
+                    {t.contact.email}
+                  </label>
                   <input
                     type="email"
                     className="border-2 rounded-lg p-3 flex border-gray-300"
@@ -138,12 +147,14 @@ export default function Contact() {
                   />
                   {errors.email && (
                     <span className="pt-1 text-[#5651e5]">
-                      Please enter a valid email.
+                      {t.contact.errorEmail}
                     </span>
                   )}
                 </div>
                 <div className="flex flex-col py-2">
-                  <label className="uppercase text-sm py-2">Message</label>
+                  <label className="uppercase text-sm py-2">
+                    {t.contact.message}
+                  </label>
                   <textarea
                     className="border-2 rounded-lg p-3 border-gray-300 resize-none"
                     rows={10}
@@ -156,18 +167,15 @@ export default function Contact() {
                   ></textarea>
                   {errors.message && (
                     <span className="pt-1 text-[#5651e5]">
-                      Please enter a valid message with a minimum of 10
-                      characters and a maximum of 500.
+                      {t.contact.errorMessage}
                     </span>
                   )}
                 </div>
                 <button className="w-full p-4 text-gray-100 mt-4 mb-5">
-                  Send Message
+                  {t.contact.button}
                 </button>
                 {sendOk && (
-                  <span className="text-[#16a34a]">
-                    Your message has been sent successfully!.
-                  </span>
+                  <span className="text-[#16a34a]">{t.contact.success}</span>
                 )}
               </form>
             </div>

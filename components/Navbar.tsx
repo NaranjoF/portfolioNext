@@ -133,6 +133,7 @@ export default function Navbar() {
           </div>
           <select
             onChange={changeLang}
+            style={{ color: `${linkColor}` }}
             className="ml-10 text-shadow-sm text-sm bg-transparent uppercase cursor-pointer focus:outline-none"
           >
             <option ref={firstSelector} className="text-black" value="en">

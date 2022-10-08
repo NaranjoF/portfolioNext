@@ -16,15 +16,21 @@ import firebaseLogo from "../public/assets/skills/firebase.png";
 import githubLogo from "../public/assets/skills/github1.png";
 import gitLogo from "../public/assets/skills/git.png";
 import postgreLogo from "../public/assets/skills/Postgresql.png";
+import { useRouter } from "next/router";
+import { en, es } from "../lang/translations";
 
 export default function Skills() {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : es;
+
   return (
     <div id="skills" className="w-full lg:h-screen p-2">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
         <p className="text-xl tracking-widest uppercase text-[#5651e5] select-none">
-          Skills
+          {t.skills.headerTitle}
         </p>
-        <h2 className="py-4 select-none">What I Can Do?</h2>
+        <h2 className="py-4 select-none">{t.skills.title}</h2>
         <div className="grid md:grid-cols-x lg:grid-cols-4 gap-8">
           <Skill
             sourceImage={htmlLogo}
