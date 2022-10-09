@@ -138,7 +138,7 @@ export const es = {
       "Sección de Búsqueda: Esta sección se comporta igual que netflix, al ingresar un string el buscador devolverá las películas que coincidan o contengan parte del string ingresado, luego tenemos su pie de página correspondiente. Al igual que la página de inicio, todo esto es responsive.",
     notlogged: `HOMEPAGE SIN INICIAR SESIÓN: Esta sección contiene dos formularios donde podemos ingresar nuestro correo electrónico y seremos redirigidos a la página de inicio de sesión donde podemos registrarnos o iniciar sesión, luego tenemos algunas funciones que explican lo que podemos hacer con nextflix, 'enjoy on your tv', 'download your shows to watch offline' y etc. Luego tenemos una sección de preguntas frecuentes donde podemos hacer clic en cada pregunta y aparecerá una respuesta, luego tenemos su pie de página correspondiente. Al igual que la página de inicio y la sección de búsqueda, todo esto es responsive.`,
     login:
-      "LOGIN PAGE: Esta sección contiene un formulario y un pie de página, en el formulario podemos ingresar nuestro correo electrónico y contraseña para ver la Homepage, si no estamos registrados, hacemos clic en sign up now e ingresamos el correo electrónico con el que queremos registrarnos y una contraseña de 6 caracteres mínimo y 60 máximo",
+      "LOGIN PAGE: Esta sección contiene un formulario y un pie de página, en el formulario podemos ingresar nuestro correo electrónico y contraseña para ver la Homepage, si no estamos registrados, hacemos clic en sign up now e ingresamos el correo electrónico con el que queremos registrarnos y una contraseña de 6 caracteres mínimo y 60 máximo.",
     back: "Volver",
     techno: "Tecnologias",
     code: "codigo",
