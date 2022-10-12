@@ -131,6 +131,13 @@ export default function Navbar() {
               <AiOutlineMenu style={{ color: `${linkColor}` }} size={25} />
             </div>
           </div>
+          <a
+            href={`/${t.main.cv}.pdf`}
+            className="whitespace-nowrap p-2 text-gray-100 shadow-x rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] cursor-pointer ml-10 text-sm xxsmax:text-xs"
+            download="Naranjo Facundo CV"
+          >
+            DL CV
+          </a>
           <select
             onChange={changeLang}
             style={{ color: `${linkColor}` }}

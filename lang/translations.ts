@@ -17,6 +17,7 @@ export const en = {
   },
 
   main: {
+    cv: "en",
     title: `Hi, I'm `,
     language: "#",
     subtitle: "A Front-End Web Developer",
@@ -100,6 +101,7 @@ export const es = {
   },
 
   main: {
+    cv: "es",
     title: `Hola, yo soy `,
     subtitle: "Un Desarrollador Web Front-End",
     language: "es#",
