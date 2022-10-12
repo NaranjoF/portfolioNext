@@ -15,7 +15,7 @@ export default function Netflix() {
     <div className="w-full">
       <Head>
         <title>Facundo Naranjo | Netflix Clone</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logofn.ico" />
       </Head>
       <div className="w-full h-[30vh] lg:h-[40vh] xsmax:h-[60vh] relative">
         <div className="absolute top-0 left-0 w-full h-[30vh] xsmax:h-[60vh] lg:h-[40vh] bg-black/80 z-10" />

@@ -10,7 +10,7 @@ import { setnavbarShadowState } from "../slices/navbarShadowSlice";
 import { setnavbarBgState } from "../slices/navbarBgSlice";
 import { setlinkColorState } from "../slices/linkColorSlice";
 import { useRouter } from "next/router";
-import navbarLogo from "../public/assets/logo.png";
+import navbarLogo from "../public/logofinal.png";
 import { en, es } from "../lang/translations";
 
 export default function Navbar() {

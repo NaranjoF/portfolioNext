@@ -11,7 +11,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Facundo Naranjo | Front-End Developer</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logofn.ico" />
       </Head>
 
       <Main />
