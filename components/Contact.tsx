@@ -66,13 +66,13 @@ export default function Contact() {
   const t = locale === "en" ? en : es;
 
   return (
-    <div id="contact" className="w-full lg:h-screen relative">
-      <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
+    <div id="contact" className="w-full lg:h-full relative">
+      <div className="max-w-[1240px] m-auto px-2 py-16 w-full xs:pt-16 xs:pb-0">
         <p className="text-xl tracking-widest uppercase text-[#5651e5]">
           {t.contact.headerTitle}
         </p>
         <h2 className="py-4">{t.contact.title}</h2>
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="xs:flex xs:flex-col sm:grid lg:grid-cols-5 gap-8">
           {/* Left */}
           <div className="col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4">
             <div className="lg:p-4 h-full">
@@ -92,16 +92,36 @@ export default function Contact() {
                 <p className="uppercase pt-8">{t.contact.subtitle3}</p>
                 <div className="flex items-center justify-between py-4">
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaLinkedinIn />
+                    <a
+                      href="https://www.linkedin.com/in/naranjofacundo"
+                      target="_blank"
+                      title={t.link.linkedin}
+                    >
+                      <FaLinkedinIn />
+                    </a>
                   </div>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaGithub />
+                    <a
+                      href="https://github.com/NaranjoF"
+                      target="_blank"
+                      title={t.link.github}
+                    >
+                      <FaGithub />
+                    </a>
                   </div>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <AiOutlineMail />
+                    <a
+                      href="mailto:facundo.naranjo00@gmail.com"
+                      target="_blank"
+                      title={t.link.mail}
+                    >
+                      <AiOutlineMail />
+                    </a>
                   </div>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <BsFillPersonLinesFill />
+                    <a href="/#contact" title={t.link.contact}>
+                      <BsFillPersonLinesFill />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -120,7 +140,7 @@ export default function Contact() {
                     </label>
                     <input
                       type="text"
-                      className="border-2 rounded-lg p-3 flex border-gray-300"
+                      className="border-2 rounded-lg p-3 flex border-gray-300 w-full"
                       onClick={() => setSendOk(false)}
                       {...register("name", {
                         required: true,

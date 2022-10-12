@@ -128,7 +128,7 @@ export default function Navbar() {
           </ul>
           <div className="flex justify-center items-center md:hidden">
             <div onClick={handleNav} className="cursor-pointer">
-              <AiOutlineMenu size={25} />
+              <AiOutlineMenu style={{ color: `${linkColor}` }} size={25} />
             </div>
           </div>
           <select
@@ -157,8 +157,8 @@ export default function Navbar() {
         <div
           className={
             navbarState
-              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500"
-              : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
+              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500 xsmax:overflow-scroll xxsmax:px-5"
+              : "fixed left-[-200%] top-0 p-10 ease-in duration-500"
           }
         >
           <div>
@@ -182,8 +182,8 @@ export default function Navbar() {
             </div>
 
             <div className="border-b border-gray-300 my-4">
-              <p className="w-[85%] md:w-[90%] py-4">
-                If you imagine it, you can program it
+              <p className="xs:text-xs sm:text-base w-[85%] md:w-[90%] py-4">
+                {t.navbar.phrase}
               </p>
             </div>
           </div>
@@ -195,7 +195,7 @@ export default function Navbar() {
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
                 >
-                  Home
+                  {t.navbar.home}
                 </li>
               </Link>
               <Link href="/#about">
@@ -203,7 +203,7 @@ export default function Navbar() {
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
                 >
-                  About
+                  {t.navbar.about}
                 </li>
               </Link>
               <Link href="/#skills">
@@ -211,7 +211,7 @@ export default function Navbar() {
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
                 >
-                  Skills
+                  {t.navbar.skills}
                 </li>
               </Link>
               <Link href="/#projects">
@@ -219,7 +219,7 @@ export default function Navbar() {
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
                 >
-                  Projects
+                  {t.navbar.projects}
                 </li>
               </Link>
               <Link href="/#contact">
@@ -227,28 +227,48 @@ export default function Navbar() {
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
                 >
-                  Contact
+                  {t.navbar.contact}
                 </li>
               </Link>
             </ul>
-            <div className="pt-32">
-              <p className="uppercase tracking-widest text-[#5651e5]">
-                Let's Connect
+            <div className="xs:pt-5 sm:pt-32">
+              <p className="xs:text-xs sm:text-base uppercase tracking-widest text-[#5651e5]">
+                {t.navbar.connect}
               </p>
 
               <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                <a
+                  href="https://www.linkedin.com/in/naranjofacundo"
+                  target="_blank"
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
+                  title={t.link.linkedin}
+                >
                   <FaLinkedinIn />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                </a>
+                <a
+                  href="https://github.com/NaranjoF"
+                  target="_blank"
+                  title={t.link.github}
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
+                >
                   <FaGithub />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                </a>
+                <a
+                  href="mailto:facundo.naranjo00@gmail.com"
+                  target="_blank"
+                  title={t.link.mail}
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
+                >
                   <AiOutlineMail />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                </a>
+                <a
+                  href={`/${t.main.language}contact`}
+                  onClick={() => dispatch(setnavbarState(false))}
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
+                  title={t.link.contact}
+                >
                   <BsFillPersonLinesFill />
-                </div>
+                </a>
               </div>
             </div>
           </div>

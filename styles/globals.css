@@ -22,7 +22,7 @@ html {
   }
 
   h1 {
-    @apply text-4xl sm:text-5xl md:text-6xl;
+    @apply text-4xl xs:text-2xl sm:text-5xl md:text-6xl;
   }
 
   h2 {

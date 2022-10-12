@@ -25,7 +25,7 @@ export default function Skills() {
   const t = locale === "en" ? en : es;
 
   return (
-    <div id="skills" className="w-full lg:h-screen p-2">
+    <div id="skills" className="w-full lg:h-full p-2">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
         <p className="text-xl tracking-widest uppercase text-[#5651e5] select-none">
           {t.skills.headerTitle}

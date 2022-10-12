@@ -4,6 +4,7 @@ import { RiRadioButtonFill } from "react-icons/ri";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { en, es } from "../lang/translations";
+import Head from "next/head";
 
 export default function Netflix() {
   const router = useRouter();
@@ -12,8 +13,12 @@ export default function Netflix() {
 
   return (
     <div className="w-full">
-      <div className="w-full h-[30vh] lg:h-[40vh] relative">
-        <div className="absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/80 z-10" />
+      <Head>
+        <title>Facundo Naranjo | Netflix Clone</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="w-full h-[30vh] lg:h-[40vh] xsmax:h-[60vh] relative">
+        <div className="absolute top-0 left-0 w-full h-[30vh] xsmax:h-[60vh] lg:h-[40vh] bg-black/80 z-10" />
         <Image
           className="absolute z-1"
           layout="fill"
@@ -47,8 +52,24 @@ export default function Netflix() {
               <p>{t.netflix.login}</p>
             </li>
           </ul>
-          <button className="px-8 py-2 mt-4 mr-8">Demo</button>
-          <button className="px-8 py-2 mt-4">{t.netflix.code}</button>
+          <div className="flex flex-row">
+            <button className="px-8 py-2 mt-4 mr-8 projectsmall:px-3">
+              <a
+                href="https://netflix-clone-naranjof.vercel.app/"
+                target="_blank"
+              >
+                Demo
+              </a>
+            </button>
+            <button className="px-8 py-2 mt-4 projectsmall:px-3">
+              <a
+                href="https://github.com/NaranjoF/netflix-clone"
+                target="_blank"
+              >
+                {t.netflix.code}
+              </a>
+            </button>
+          </div>
         </div>
         <div className="col-span-4 h-max md:col-span-2 lg:col-span-1 shadow-xl shadow-gray-400 rounded-xl p-4 text-ss">
           <div className="p-2">
