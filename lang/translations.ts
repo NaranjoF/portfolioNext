@@ -68,7 +68,7 @@ export const en = {
     headerTitle: "Proyecto",
     title: "Overview",
     description:
-      "This netflix clone was created in NEXT JS, using FIREBASE to perform the login function, STYLED COMPONENTS to stylize the project, and THE MOVIE DATABASE API to consume movie poster images.",
+      "This netflix clone was created in NEXT JS, using TYPESCRIPT as a programming language, FIREBASE to perform the login function, STYLED COMPONENTS to stylize the project, and THE MOVIE DATABASE API to consume movie poster images.",
     subtitle: "-This clone has:",
     homepage: `HOMEPAGE: Here we have the classic netflix homepage, where we have a movie trailer, which when it ends shows a wallpaper of it, we also have a function to repeat the trailer again and another function to mute the trailer, (trailer that changes every time we update the page and has its corresponding 'more info' section where we can see a modal with the information about the movie, the actors and recommended movies, just as it appears on netflix), then inside the homepage we have the sliders section, where we can see several movies of different categories, we also have a fictitious 'coming soon' section where we can appreciate a slider with several movie posters. This is not found on netflix but it was a good idea to consume data from an api to do server side rendering. Finally we have a footer, all these features of the homepage have their corresponding responsive design so they adapt to different devices.`,
     search:
@@ -153,7 +153,7 @@ export const es = {
     headerTitle: "Proyecto",
     title: "Descripción",
     description:
-      "Este clon de Netflix se creó en NEXT JS, utilizando FIREBASE para realizar la función de inicio de sesión, STYLED COMPONENTS para estilizar el proyecto y THE MOVIE DATABASE API para consumir imágenes de carteles de películas.",
+      "Este clon de Netflix se creó en NEXT JS, utilizando TYPESCRIPT como lenguaje de programación, FIREBASE para realizar la función de inicio de sesión, STYLED COMPONENTS para estilizar el proyecto y THE MOVIE DATABASE API para consumir imágenes de carteles de películas.",
     subtitle: "-Este clon tiene:",
     homepage: `HOMEPAGE: Aquí tenemos la página de inicio clásica de netflix, donde tenemos un tráiler de una película, que cuando termina muestra un fondo de pantalla de la misma, también tenemos una función para repetir el tráiler nuevamente y otra función para silenciar el tráiler, (tráiler que cambia cada vez que actualizamos la página y tiene su correspondiente sección 'more info' donde podemos ver un modal con la información sobre la película, los actores y las películas recomendadas, tal como aparece en netflix), luego dentro de la página de inicio tenemos la sección de sliders, donde podemos ver varias películas de diferentes categorías, también tenemos una sección ficticia de "Coming Soon" donde podemos apreciar un slider con varios carteles de películas. Esto no se encuentra en netflix, pero fue una buena idea consumir datos de una API para hacer server side rendering. Por último tenemos un pie de página. Todas estas características de la Homepage tienen su correspondiente diseño responsive para que se adapten a diferentes dispositivos.`,
     search:
