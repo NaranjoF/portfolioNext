@@ -2,9 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import sgMail from "@sendgrid/mail";
 
-sgMail.setApiKey(
-  "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"
-);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
 type Data = {
   success: boolean;
