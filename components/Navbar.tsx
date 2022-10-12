@@ -132,9 +132,9 @@ export default function Navbar() {
             </div>
           </div>
           <a
-            href={`/${t.main.cv}.pdf`}
+            href={`/Naranjo Facundo CV ${t.main.cv}.pdf`}
             className="whitespace-nowrap p-2 text-gray-100 shadow-x rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] cursor-pointer ml-10 text-sm xxsmax:text-xs"
-            download="Naranjo Facundo CV"
+            download={true}
           >
             DL CV
           </a>
