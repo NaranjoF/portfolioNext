@@ -60,13 +60,6 @@ export default function Main() {
               <BsFillPersonLinesFill />
             </a>
           </div>
-          {/* <a
-            href="/en.pdf"
-            className="w-full p-4 text-gray-100 mt-4 mb-5 shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] cursor-pointer"
-            download={true}
-          >
-            Download CV
-          </a> */}
         </div>
       </div>
     </div>

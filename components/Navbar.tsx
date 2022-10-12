@@ -101,27 +101,27 @@ export default function Navbar() {
         <div className="flex justify-center items-center">
           <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
             <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:border-b">
+              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
                 {t.navbar.home}
               </li>
             </Link>
             <Link href="/#about">
-              <li className="ml-10 text-sm uppercase hover:border-b">
+              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
                 {t.navbar.about}
               </li>
             </Link>
             <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:border-b">
+              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
                 {t.navbar.skills}
               </li>
             </Link>
             <Link href="/#projects">
-              <li className="ml-10 text-sm uppercase hover:border-b">
+              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
                 {t.navbar.projects}
               </li>
             </Link>
             <Link href="/#contact">
-              <li className="ml-10 text-sm uppercase hover:border-b">
+              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
                 {t.navbar.contact}
               </li>
             </Link>
