@@ -55,7 +55,7 @@ export default function Netflix() {
           <div className="flex flex-row">
             <button className="px-8 py-2 mt-4 mr-8 projectsmall:px-3">
               <a
-                href="https://netflix-clone-naranjof.vercel.app/"
+                href="https://netflix-clone-git-main-naranjof.vercel.app/"
                 target="_blank"
               >
                 Demo
