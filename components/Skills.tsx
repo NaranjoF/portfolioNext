@@ -16,6 +16,9 @@ import firebaseLogo from "../public/assets/skills/firebase.png";
 import githubLogo from "../public/assets/skills/github1.png";
 import gitLogo from "../public/assets/skills/git.png";
 import postgreLogo from "../public/assets/skills/Postgresql.png";
+import jestLogo from "../public/assets/skills/jest.svg";
+import linuxLogo from "../public/assets/skills/linux.png";
+import tlLogo from "../public/assets/skills/testing-library.png";
 import { useRouter } from "next/router";
 import { en, es } from "../lang/translations";
 
@@ -142,6 +145,27 @@ export default function Skills() {
             width={"64px"}
             height={"64px"}
             skillName={"PostgreSQL"}
+          />
+
+          <Skill
+            sourceImage={jestLogo}
+            width={"64px"}
+            height={"64px"}
+            skillName={"Jest"}
+          />
+
+          <Skill
+            sourceImage={linuxLogo}
+            width={"64px"}
+            height={"64px"}
+            skillName={"Linux"}
+          />
+
+          <Skill
+            sourceImage={tlLogo}
+            width={"64px"}
+            height={"64px"}
+            skillName={"React Testing Library"}
           />
         </div>
       </div>
