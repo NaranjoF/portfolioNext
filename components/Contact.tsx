@@ -23,19 +23,8 @@ export default function Contact() {
     formState: { errors, isSubmitSuccessful },
   } = useForm<Inputs>();
 
-  const [errorsForm, setErrorsForm] = useState<{
-    name?: string;
-    email?: string;
-    message?: string;
-  }>({});
-
   const onSubmit: SubmitHandler<Inputs> = async ({ email, name, message }) => {
     const valuesForm = { email, name, message };
-    const isError = Object.keys(errorsForm).length;
-    if (isError && isError > 0) {
-      setErrorsForm(errorsForm);
-      return;
-    }
     try {
       const res = await fetch("/api/send", {
         method: "POST",
@@ -141,6 +130,7 @@ export default function Contact() {
                     <input
                       type="text"
                       className="border-2 rounded-lg p-3 flex border-gray-300 w-full"
+                      data-testid="input-name"
                       onClick={() => setSendOk(false)}
                       {...register("name", {
                         required: true,
@@ -162,6 +152,7 @@ export default function Contact() {
                   <input
                     type="email"
                     className="border-2 rounded-lg p-3 flex border-gray-300"
+                    data-testid="input-email"
                     onClick={() => setSendOk(false)}
                     {...register("email", { required: true })}
                   />
@@ -179,6 +170,7 @@ export default function Contact() {
                     className="border-2 rounded-lg p-3 border-gray-300 resize-none"
                     rows={10}
                     onClick={() => setSendOk(false)}
+                    data-testid="textarea-form"
                     {...register("message", {
                       required: true,
                       minLength: 10,

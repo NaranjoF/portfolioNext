@@ -9,13 +9,16 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import navbarReducer from "./slices/navbarSlice";
 import navbarshadowReducer from "./slices/navbarShadowSlice";
 import navbarBgReducer from "./slices/navbarBgSlice";
+import lanSelectorReducer from "./slices/lanSelectorSlice";
 import linkColorReducer from "./slices/linkColorSlice";
+import type { PreloadedState } from "@reduxjs/toolkit";
 
 const combinedReducer = combineReducers({
   navbar: navbarReducer,
   navbarShadow: navbarshadowReducer,
   navbarBg: navbarBgReducer,
   linkColor: linkColorReducer,
+  lanSelector: lanSelectorReducer,
 });
 
 const reducer = (
@@ -40,8 +43,16 @@ export const makeStore = () =>
 
 type Store = ReturnType<typeof makeStore>;
 
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: combinedReducer,
+    preloadedState,
+  });
+};
+
 export type AppDispatch = Store["dispatch"];
 export type RootState = ReturnType<Store["getState"]>;
+export type AppStore = ReturnType<typeof setupStore>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,

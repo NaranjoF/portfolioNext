@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { setnavbarShadowState } from "../slices/navbarShadowSlice";
 import { setnavbarBgState } from "../slices/navbarBgSlice";
 import { setlinkColorState } from "../slices/linkColorSlice";
+import { setlanSelectorState } from "../slices/lanSelectorSlice";
 import { useRouter } from "next/router";
 import navbarLogo from "../public/logofinal.png";
 import { en, es } from "../lang/translations";
@@ -19,6 +20,7 @@ export default function Navbar() {
   const navbarShadowState = useAppSelector((state) => state.navbarShadow.value);
   const navbarBg = useAppSelector((state) => state.navbarBg.value);
   const linkColor = useAppSelector((state) => state.linkColor.value);
+  const langState = useAppSelector((state) => state.lanSelector.value);
   const router = useRouter();
   const { locale } = router;
   const t = locale === "en" ? en : es;
@@ -30,20 +32,14 @@ export default function Navbar() {
     dispatch(setnavbarState(!navbarState));
   };
 
-  const [isEnSelected, setIsEnSelected] = useState(false);
-
   useEffect(() => {
     const first = firstSelector.current;
     const second = secondSelector.current;
 
-    if (locale === "en" && first !== null && second !== null) {
-      setIsEnSelected(true);
-      first.value = "en";
-      second.value = "es";
-    } else if (locale !== "en" && first !== null && second !== null) {
-      setIsEnSelected(false);
-      first.value = "es";
-      second.value = "en";
+    if (locale === "en") {
+      dispatch(setlanSelectorState(true));
+    } else if (locale !== "en") {
+      dispatch(setlanSelectorState(false));
     }
   }, []);
 
@@ -87,26 +83,36 @@ export default function Navbar() {
           ? "fixed w-full h-20 shadow-xl z-[100] ease-in duration-300"
           : "fixed w-full h-20 z-[100] ease-in duration-300"
       }
+      data-testid="navbar"
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
-        <Link href="/">
-          <Image
-            src={navbarLogo}
-            alt="logoNavbar"
-            width="50"
-            height="50"
-            className="cursor-pointer"
-          />
+        <Link href="/" data-testid="logo-shortcut">
+          <div>
+            <Image
+              src={navbarLogo}
+              alt="logoNavbar"
+              width="50"
+              height="50"
+              className="cursor-pointer"
+            />
+          </div>
         </Link>
         <div className="flex justify-center items-center">
-          <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
+          <ul
+            style={{ color: `${linkColor}` }}
+            className="hidden md:flex"
+            data-testid="link-navbar"
+          >
             <Link href="/">
               <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
                 {t.navbar.home}
               </li>
             </Link>
             <Link href="/#about">
-              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
+              <li
+                className="ml-10 text-sm uppercase hover:text-[#5651e5]"
+                data-testid="about"
+              >
                 {t.navbar.about}
               </li>
             </Link>
@@ -127,7 +133,11 @@ export default function Navbar() {
             </Link>
           </ul>
           <div className="flex justify-center items-center md:hidden">
-            <div onClick={handleNav} className="cursor-pointer">
+            <div
+              onClick={handleNav}
+              data-testid="outline-menu"
+              className="cursor-pointer"
+            >
               <AiOutlineMenu style={{ color: `${linkColor}` }} size={25} />
             </div>
           </div>
@@ -143,12 +153,22 @@ export default function Navbar() {
             style={{ color: `${linkColor}` }}
             className="ml-10 text-shadow-sm text-sm bg-transparent uppercase cursor-pointer focus:outline-none"
           >
-            <option ref={firstSelector} className="text-black" value="en">
-              {isEnSelected ? "EN" : "ES"}
+            <option
+              ref={firstSelector}
+              className="text-black"
+              value={langState ? "en" : "es"}
+              data-testid="first-selector"
+            >
+              {langState ? "EN" : "ES"}
             </option>
 
-            <option ref={secondSelector} className="text-black" value="es">
-              {isEnSelected ? "ES" : "EN"}
+            <option
+              ref={secondSelector}
+              className="text-black"
+              value={langState ? "es" : "en"}
+              data-testid="second-selector"
+            >
+              {langState ? "ES" : "EN"}
             </option>
           </select>
         </div>
@@ -160,6 +180,7 @@ export default function Navbar() {
             ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70"
             : ""
         }
+        data-testid="left-menu-container"
       >
         <div
           className={
@@ -167,22 +188,26 @@ export default function Navbar() {
               ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500 xsmax:overflow-scroll xxsmax:px-5"
               : "fixed left-[-200%] top-0 p-10 ease-in duration-500"
           }
+          data-testid="left-menu"
         >
           <div>
             <div className="flex w-full items-center justify-between">
               <Link href="/">
-                <Image
-                  src={navbarLogo}
-                  alt="logoNavbar"
-                  width="40"
-                  height="40"
-                  className="cursor-pointer"
-                />
+                <div>
+                  <Image
+                    src={navbarLogo}
+                    alt="logoNavbar"
+                    width="40"
+                    height="40"
+                    className="cursor-pointer"
+                  />
+                </div>
               </Link>
 
               <div
                 onClick={handleNav}
                 className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
+                data-testid="left-menu-close"
               >
                 <AiOutlineClose />
               </div>
@@ -201,6 +226,7 @@ export default function Navbar() {
                 <li
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
+                  data-testid="home-left-menu"
                 >
                   {t.navbar.home}
                 </li>
@@ -209,6 +235,7 @@ export default function Navbar() {
                 <li
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
+                  data-testid="about-left-menu"
                 >
                   {t.navbar.about}
                 </li>
@@ -217,6 +244,7 @@ export default function Navbar() {
                 <li
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
+                  data-testid="skills-left-menu"
                 >
                   {t.navbar.skills}
                 </li>
@@ -225,6 +253,7 @@ export default function Navbar() {
                 <li
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
+                  data-testid="projects-left-menu"
                 >
                   {t.navbar.projects}
                 </li>
@@ -233,6 +262,7 @@ export default function Navbar() {
                 <li
                   onClick={() => dispatch(setnavbarState(false))}
                   className="py-4 text-sm"
+                  data-testid="contact-left-menu"
                 >
                   {t.navbar.contact}
                 </li>
@@ -273,6 +303,7 @@ export default function Navbar() {
                   onClick={() => dispatch(setnavbarState(false))}
                   className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
                   title={t.link.contact}
+                  data-testid="contact-icon-left-menu"
                 >
                   <BsFillPersonLinesFill />
                 </a>
