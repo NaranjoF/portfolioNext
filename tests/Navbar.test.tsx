@@ -202,9 +202,5 @@ describe("Navbar", () => {
     expect(screen.getByTestId("second-selector")).toHaveValue("en");
     expect(screen.getByTestId("first-selector")).toHaveTextContent(/es/i);
     expect(screen.getByTestId("second-selector")).toHaveTextContent(/en/i);
-
-    // expect(screen.getByTestId("first-selector")).toHaveValue("es");
-    // expect(screen.getByTestId("second-selector")).toHaveValue("en");
-    // screen.debug(screen.getByRole("option", { name: /es/i }));
   });
 });
