@@ -44,7 +44,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (router.asPath === "/netflix" && window.scrollY === 0) {
+    if (
+      (router.asPath === "/netflix" || router.asPath === "/portfolio") &&
+      window.scrollY === 0
+    ) {
       dispatch(setlinkColorState("#ecf0f3"));
       dispatch(setnavbarBgState("transparent"));
     } else {

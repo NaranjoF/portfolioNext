@@ -1,6 +1,6 @@
-describe("test e2e for the netflix page", () => {
+describe("test e2e for the portfolio page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/en/netflix");
+    cy.visit("http://localhost:3000/en/portfolio");
   });
 
   it("the button (code) must have its correct redirect", () => {
@@ -8,7 +8,7 @@ describe("test e2e for the netflix page", () => {
     cy.findByTestId("code-button").should(
       "have.attr",
       "href",
-      "https://github.com/NaranjoF/netflix-clone"
+      "https://github.com/NaranjoF/portfolioNext"
     );
   });
 

@@ -18,7 +18,9 @@ import gitLogo from "../public/assets/skills/git.png";
 import postgreLogo from "../public/assets/skills/Postgresql.png";
 import jestLogo from "../public/assets/skills/jest.svg";
 import linuxLogo from "../public/assets/skills/linux.png";
-import tlLogo from "../public/assets/skills/testing-library.png";
+import tlLogo from "../public/assets/skills/rtesl.png";
+import clLogo from "../public/assets/skills/ctesl.png";
+import cypressLogo from "../public/assets/skills/cypress.webp";
 import { useRouter } from "next/router";
 import { en, es } from "../lang/translations";
 
@@ -155,10 +157,10 @@ export default function Skills() {
           />
 
           <Skill
-            sourceImage={linuxLogo}
+            sourceImage={cypressLogo}
             width={"64px"}
             height={"64px"}
-            skillName={"Linux"}
+            skillName={"Cypress"}
           />
 
           <Skill
@@ -166,6 +168,20 @@ export default function Skills() {
             width={"64px"}
             height={"64px"}
             skillName={"React Testing Library"}
+          />
+
+          <Skill
+            sourceImage={clLogo}
+            width={"64px"}
+            height={"64px"}
+            skillName={"Cypress Testing Library"}
+          />
+
+          <Skill
+            sourceImage={linuxLogo}
+            width={"64px"}
+            height={"64px"}
+            skillName={"Linux"}
           />
         </div>
       </div>

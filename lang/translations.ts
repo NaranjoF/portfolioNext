@@ -65,7 +65,7 @@ export const en = {
   },
 
   netflix: {
-    headerTitle: "Proyecto",
+    headerTitle: "Proyect",
     title: "Overview",
     description:
       "This netflix clone was created in NEXT JS, using TYPESCRIPT as a programming language, FIREBASE to perform the login function, STYLED COMPONENTS to stylize the project, and THE MOVIE DATABASE API to consume movie poster images.",
@@ -79,6 +79,26 @@ export const en = {
     back: "Back",
     techno: "Technologies",
     code: "code",
+  },
+
+  portfolio: {
+    headerTitle: "Proyect",
+    title: "Overview",
+    description:
+      "This is my personal portfolio, it was created in NEXT.JS, using TYPESCRIPT as a programming language, REDUX to handle states, TAILWIND to style the project, JEST to perform unit tests and CYPRESS to perform E2E tests. Also use other tools like react hook forms, next-redux-wrapper, sendgrid, i18n, among others.",
+    subtitle: "-This Project has:",
+    homepage: `HOMEPAGE: Here we have a homepage with a welcome message telling a little about me and with some links to contact me. We also have a navbar, with some shortcuts to go to the different sections of this website, in addition to a 'DL CV' button, that when we click on it you can download my curriculum vitae. Right next to it we can select in which language we want to see the web page (English or Spanish)`,
+    about:
+      "About: Here I tell my story in depth and we have a link to go directly to my latest projects",
+    skills: `Skills: Here you can see what tools I use`,
+    projects: "Projects: Here you can see all my updated projects",
+    projectPage:
+      "Project Page: Here you can see a specific project in depth, I tell you the tools I used and what things can do the project",
+    contact:
+      "Contact: Here is a form you can use to contact me, powered by SendGrid",
+    code: "code",
+    techno: "Tecnologias",
+    back: "Back",
   },
 };
 
@@ -164,5 +184,25 @@ export const es = {
     back: "Volver",
     techno: "Tecnologias",
     code: "codigo",
+  },
+
+  portfolio: {
+    headerTitle: "Proyecto",
+    title: "Descripción",
+    description:
+      "Este es mi portafolio personal, fue creado en NEXT.JS, usando TYPESCRIPT como lenguaje de programación, REDUX para manejar estados, TAILWIND para estilizar el proyecto, JEST para realizar test unitarios y CYPRESS para realizar test E2E. También use otras herramientas como React Hook Form, next-redux-wrapper, sendgrid, i18n, entre otros.",
+    subtitle: "-Este proyecto tiene:",
+    homepage: `HOMEPAGE: Aquí tenemos una página de inicio con un mensaje de bienvenida que cuenta un poco sobre mí y con algunos enlaces para contactarme. También tenemos una barra de navegación, con algunos accesos directos para ir a las diferentes secciones de este sitio web, además de un botón 'DL CV', que al hacer clic en él puede descargar mi currículum vitae. Justo al lado podemos seleccionar en qué idioma queremos ver la página web (inglés o español)`,
+    about:
+      "About: Aquí cuento mi historia en profundidad y tenemos un enlace para ir directamente a mis últimos proyectos",
+    skills: `Skills: Aquí puedes ver las herramientas que uso`,
+    projects: "Projects: Aquí puedes ver todos mis proyectos actualizados",
+    projectPage:
+      "Project Page: Aquí puedes ver un proyecto específico en profundidad, te cuento las herramientas que utilicé y qué cosas puede hacer el proyecto",
+    contact:
+      "Contact: Aquí hay un formulario que puede usar para contactarme, powered by SendGrid",
+    code: "código",
+    techno: "Tecnologias",
+    back: "Volver",
   },
 };
