@@ -87,7 +87,7 @@ export default function Navbar() {
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <Link href="/" data-testid="logo-shortcut">
-          <div>
+          <div data-testid="logo-navbar">
             <Image
               src={navbarLogo}
               alt="logoNavbar"
@@ -104,30 +104,42 @@ export default function Navbar() {
             data-testid="link-navbar"
           >
             <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
+              <li
+                className="ml-10 text-sm uppercase hover:text-[#5651e5]"
+                data-testid="navbar-home"
+              >
                 {t.navbar.home}
               </li>
             </Link>
             <Link href="/#about">
               <li
                 className="ml-10 text-sm uppercase hover:text-[#5651e5]"
-                data-testid="about"
+                data-testid="navbar-about"
               >
                 {t.navbar.about}
               </li>
             </Link>
             <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
+              <li
+                className="ml-10 text-sm uppercase hover:text-[#5651e5]"
+                data-testid="navbar-skills"
+              >
                 {t.navbar.skills}
               </li>
             </Link>
             <Link href="/#projects">
-              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
+              <li
+                className="ml-10 text-sm uppercase hover:text-[#5651e5]"
+                data-testid="navbar-projects"
+              >
                 {t.navbar.projects}
               </li>
             </Link>
             <Link href="/#contact">
-              <li className="ml-10 text-sm uppercase hover:text-[#5651e5]">
+              <li
+                className="ml-10 text-sm uppercase hover:text-[#5651e5]"
+                data-testid="navbar-contact"
+              >
                 {t.navbar.contact}
               </li>
             </Link>
@@ -143,6 +155,7 @@ export default function Navbar() {
           </div>
           <a
             href={`/Naranjo Facundo CV ${t.main.cv}.pdf`}
+            data-testid="button-download"
             className="whitespace-nowrap p-2 text-gray-100 shadow-x rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] cursor-pointer ml-10 text-sm xxsmax:text-xs"
             download={true}
           >
@@ -150,6 +163,7 @@ export default function Navbar() {
           </a>
           <select
             onChange={changeLang}
+            data-testid="change-lan"
             style={{ color: `${linkColor}` }}
             className="ml-10 text-shadow-sm text-sm bg-transparent uppercase cursor-pointer focus:outline-none"
           >
@@ -276,6 +290,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
                 <a
                   href="https://www.linkedin.com/in/naranjofacundo"
+                  data-testid="linkedin-left-menu"
                   target="_blank"
                   className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
                   title={t.link.linkedin}
@@ -285,6 +300,7 @@ export default function Navbar() {
                 <a
                   href="https://github.com/NaranjoF"
                   target="_blank"
+                  data-testid="github-left-menu"
                   title={t.link.github}
                   className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
                 >
@@ -294,6 +310,7 @@ export default function Navbar() {
                   href="mailto:facundo.naranjo00@gmail.com"
                   target="_blank"
                   title={t.link.mail}
+                  data-testid="mail-left-menu"
                   className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
                 >
                   <AiOutlineMail />

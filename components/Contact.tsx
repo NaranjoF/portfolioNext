@@ -85,6 +85,7 @@ export default function Contact() {
                       href="https://www.linkedin.com/in/naranjofacundo"
                       target="_blank"
                       title={t.link.linkedin}
+                      data-testid="linkedin-button-contact"
                     >
                       <FaLinkedinIn />
                     </a>
@@ -94,6 +95,7 @@ export default function Contact() {
                       href="https://github.com/NaranjoF"
                       target="_blank"
                       title={t.link.github}
+                      data-testid="github-button-contact"
                     >
                       <FaGithub />
                     </a>
@@ -103,12 +105,17 @@ export default function Contact() {
                       href="mailto:facundo.naranjo00@gmail.com"
                       target="_blank"
                       title={t.link.mail}
+                      data-testid="mail-button-contact"
                     >
                       <AiOutlineMail />
                     </a>
                   </div>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <a href="/#contact" title={t.link.contact}>
+                    <a
+                      href="/#contact"
+                      title={t.link.contact}
+                      data-testid="contact-button-contact"
+                    >
                       <BsFillPersonLinesFill />
                     </a>
                   </div>
@@ -139,7 +146,10 @@ export default function Contact() {
                       })}
                     />
                     {errors.name && (
-                      <span className="pt-1 text-[#5651e5]">
+                      <span
+                        className="pt-1 text-[#5651e5]"
+                        data-testid="error-name-contact"
+                      >
                         {t.contact.errorName}
                       </span>
                     )}
@@ -157,7 +167,10 @@ export default function Contact() {
                     {...register("email", { required: true })}
                   />
                   {errors.email && (
-                    <span className="pt-1 text-[#5651e5]">
+                    <span
+                      className="pt-1 text-[#5651e5]"
+                      data-testid="error-mail-contact"
+                    >
                       {t.contact.errorEmail}
                     </span>
                   )}
@@ -178,16 +191,27 @@ export default function Contact() {
                     })}
                   ></textarea>
                   {errors.message && (
-                    <span className="pt-1 text-[#5651e5]">
+                    <span
+                      className="pt-1 text-[#5651e5]"
+                      data-testid="error-text-contact"
+                    >
                       {t.contact.errorMessage}
                     </span>
                   )}
                 </div>
-                <button className="w-full p-4 text-gray-100 mt-4 mb-5">
+                <button
+                  className="w-full p-4 text-gray-100 mt-4 mb-5"
+                  data-testid="button-contact"
+                >
                   {t.contact.button}
                 </button>
                 {sendOk && (
-                  <span className="text-[#16a34a]">{t.contact.success}</span>
+                  <span
+                    className="text-[#16a34a]"
+                    data-testid="alert-contact-ok"
+                  >
+                    {t.contact.success}
+                  </span>
                 )}
               </form>
             </div>
@@ -195,7 +219,10 @@ export default function Contact() {
         </div>
         <div className="flex justify-center py-12">
           <Link href="/">
-            <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300">
+            <div
+              className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+              data-testid="top-button"
+            >
               <HiOutlineChevronDoubleUp
                 className="m-auto text-[#5651e5]"
                 size={30}

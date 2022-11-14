@@ -57,6 +57,7 @@ export default function Netflix() {
               <a
                 href="https://proyectncln-naranjof.vercel.app/"
                 target="_blank"
+                data-testid="demo-button"
               >
                 Demo
               </a>
@@ -65,6 +66,7 @@ export default function Netflix() {
               <a
                 href="https://github.com/NaranjoF/netflix-clone"
                 target="_blank"
+                data-testid="code-button"
               >
                 {t.netflix.code}
               </a>
@@ -100,7 +102,9 @@ export default function Netflix() {
           </div>
         </div>
         <Link href="/#projects">
-          <p className="underline cursor-pointer">{t.netflix.back}</p>
+          <p className="underline cursor-pointer" data-testid="back-button">
+            {t.netflix.back}
+          </p>
         </Link>
       </div>
     </div>

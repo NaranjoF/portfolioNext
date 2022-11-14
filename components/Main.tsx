@@ -33,6 +33,7 @@ export default function Main() {
               target="_blank"
               className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
               title={t.link.linkedin}
+              data-testid="linkedin-selector"
             >
               <FaLinkedinIn />
             </a>
@@ -41,6 +42,7 @@ export default function Main() {
               target="_blank"
               title={t.link.github}
               className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+              data-testid="github-selector"
             >
               <FaGithub />
             </a>
@@ -49,6 +51,7 @@ export default function Main() {
               target="_blank"
               title={t.link.mail}
               className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+              data-testid="mail-selector"
             >
               <AiOutlineMail />
             </a>
@@ -56,6 +59,7 @@ export default function Main() {
               href={`/${t.main.language}contact`}
               className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
               title={t.link.contact}
+              data-testid="contact-selector"
             >
               <BsFillPersonLinesFill />
             </a>

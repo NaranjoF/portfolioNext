@@ -31,7 +31,10 @@ export default function Projects() {
                 Next Js, Typescript, Styled Components, SSR and Redux
               </p>
               <Link href="/netflix">
-                <p className="text-center py-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer projectsmall:text-xs">
+                <p
+                  className="text-center py-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer projectsmall:text-xs"
+                  data-testid="project-button-1"
+                >
                   {t.projects.button}
                 </p>
               </Link>

@@ -22,7 +22,10 @@ export default function About() {
             {t.about.description2}
           </p>
           <Link href="/#projects">
-            <p className="py-2 text-gray-600 underline cursor-pointer">
+            <p
+              className="py-2 text-gray-600 underline cursor-pointer"
+              data-testid="projects-button"
+            >
               {t.about.link}
             </p>
           </Link>
